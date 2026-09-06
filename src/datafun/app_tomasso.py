@@ -44,7 +44,7 @@ import time
 from typing import Final
 
 from datafun_toolkit.logger import get_logger, log_header, log_path
-from eda_vizkit import save_chart, show_numeric_distribution
+from eda_vizkit import save_chart
 import matplotlib.pyplot as plt
 import pandas as pd
 

@@ -52,9 +52,9 @@ The species column has a small number of unique values.
 There are three unique species, so a for loop can
 process and log each one.
 
-Selected measurement column: **bill_length_mm** (updated to flipper_length_mm, see below in Technical Modification)
+Selected measurement column: **bill_length_mm** updated to flipper_length_mm, see below in Technical Modification
 
-Reason for choosing this measurement: (changed to flipper_length to illustrate correlation between overall penguin size and body mass in grams)
+Reason for choosing this measurement: changed to flipper_length to illustrate correlation between overall penguin size and body mass in grams
 
 Bill length varies across penguins. (updated to flipper_length_mm)
 There is no fixed cutoff, so we'll calculate the average
