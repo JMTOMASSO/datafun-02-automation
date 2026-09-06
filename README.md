@@ -52,11 +52,11 @@ The species column has a small number of unique values.
 There are three unique species, so a for loop can
 process and log each one.
 
-Selected measurement column: **bill_length_mm**
+Selected measurement column: **bill_length_mm** (updated to flipper_length_mm, see below in Technical Modification)
 
-Reason for choosing this measurement:
+Reason for choosing this measurement: (changed to flipper_length to illustrate correlation between overall penguin size and body mass in grams)
 
-Bill length varies across penguins.
+Bill length varies across penguins. (updated to flipper_length_mm)
 There is no fixed cutoff, so we'll calculate the average
 and assign a classification depending on a threshold
 around the average value.
@@ -74,6 +74,27 @@ Stream wait seconds: 1
 ```
 
 See [project.log](project.log) for more.
+
+## Technical Modification
+
+### What I Changed
+
+I created my own version of the project and changed the selected measurement from
+`bill_length_mm` to `flipper_length_mm`. I also changed the original histogram
+visualization to a scatter plot comparing `flipper_length_mm` and `body_mass_g`.
+
+### Why I Made the Change
+
+After viewing the distribution of flipper length, I became interested in whether
+flipper length might be related to a penguin's body mass. The histogram only
+showed the distribution of one variable, so I changed the visualization to a
+scatter plot to compare the two numeric variables.
+
+### What I Observed
+
+The modified project ran successfully without errors. The scatter plot provided
+a more useful visualization for investigating the relationship between flipper
+length and body mass than the original histogram.
 
 ## Initial Results
 

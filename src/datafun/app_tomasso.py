@@ -76,7 +76,7 @@ LOG: logging.Logger = get_logger("P02", level="DEBUG")
 # Use the Path() constructor to create a Path object representing the "data" folder.
 # Combine with the CSV file name
 # to get the full path to the data file.
-DATA_FILE_PATH: Final[Path] = Path("data") / "penguins.csv"
+DATA_FILE_PATH: Final[Path] = Path("data") / "penguins_tomasso.csv"
 
 # === OPEN THE DATA FILE IN EXCEL ===
 
@@ -105,14 +105,14 @@ process and log each one.
 """
 
 # CUSTOM: WHICH measurement to classify, and why this one.
-MEASUREMENT_COLUMN: Final[str] = "bill_length_mm"
+MEASUREMENT_COLUMN: Final[str] = "flipper_length_mm"
 
 # CUSTOM: Describe why we choose it.
 # Use a triple-quoted string (three double quotes) to allow multi-line text.
 # Use a raw string (r before the opening quotes) so it appears just
 # like I typed it.
 WHY_THIS_MEASUREMENT: Final[str] = r"""
-Bill length varies across penguins.
+Flipper length varies across penguins, and is likely is a major predictor to their overall mass.
 There is no fixed cutoff, so we'll calculate the average
 and assign a classification depending on a threshold
 around the average value.
@@ -313,20 +313,24 @@ def main() -> None:
     LOG.info("07. VISUALIZE the selected measurement.")
     LOG.info("-------------------------------")
 
-    LOG.info("Creating a chart to visualize the selected measurement.")
-    LOG.info("We selected one numeric column, so let's look at the distribution.")
+    LOG.info("Creating a scatter plot to compare two numeric measurements.")
+    LOG.info("Comparing flipper length with body mass to seek correlations.")
 
     # Define a path to save the distribution plot.
     # REQUIRED: Use the "docs/images" folder to store generated charts.
-    CHART_PATH = Path("docs/images/measurement-distribution.png")
+    CHART_PATH = Path("docs/images/flipper-length-vs-body-mass.png")
 
     # Call an imported function that will show a distribution plot
     # Pass in the pandas DataFrame (df) along with the selected measurement column.
     # It will return a matplotlib Axes object representing the distribution plot.
-    ax = show_numeric_distribution(
-        df,
-        column=MEASUREMENT_COLUMN,
+    ax = df.plot.scatter(
+        x="flipper_length_mm",
+        y="body_mass_g",
     )
+
+    ax.set_title("Flipper Length vs. Body Mass")
+    ax.set_xlabel("Flipper Length (mm)")
+    ax.set_ylabel("Body Mass (g)")
 
     # call the save_chart() function and pass in the Axes and the path
     save_chart(ax, CHART_PATH)
