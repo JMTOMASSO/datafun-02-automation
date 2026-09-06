@@ -323,7 +323,7 @@ def main() -> None:
     # Call an imported function that will show a distribution plot
     # Pass in the pandas DataFrame (df) along with the selected measurement column.
     # It will return a matplotlib Axes object representing the distribution plot.
-    Fig, ax = plt.subplots()
+    _, ax = plt.subplots()
 
     for species, group in df.groupby("species"):
         ax.scatter(
